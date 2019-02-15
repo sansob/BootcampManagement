@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BootcampManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MyContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+    <EntitySet Name="Districts" EntityType="BootcampManagementModel.District" />
+    <EntitySet Name="Provinces" EntityType="BootcampManagementModel.Province" />
+    <EntitySet Name="Regencies" EntityType="BootcampManagementModel.Regency" />
+    <EntitySet Name="Villages" EntityType="BootcampManagementModel.Village" />
+    <AssociationSet Name="FK_District_Regency" Association="BootcampManagementModel.FK_District_Regency">
+      <End Role="Regency" EntitySet="Regencies" />
+      <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Village_District" Association="BootcampManagementModel.FK_Village_District">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Village" EntitySet="Villages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regency_Province" Association="BootcampManagementModel.FK_Regency_Province">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="Regency" EntitySet="Regencies" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Regency_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Regency" Relationship="BootcampManagementModel.FK_District_Regency" FromRole="District" ToRole="Regency" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Regency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Province_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Province" Relationship="BootcampManagementModel.FK_Regency_Province" FromRole="Regency" ToRole="Province" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Village">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="District_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="District" Relationship="BootcampManagementModel.FK_Village_District" FromRole="Village" ToRole="District" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_District_Regency">
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="1" />
+    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="Regency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Village_District">
+    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Village">
+        <PropertyRef Name="District_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regency_Province">
+    <End Type="BootcampManagementModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Regency">
+        <PropertyRef Name="Province_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

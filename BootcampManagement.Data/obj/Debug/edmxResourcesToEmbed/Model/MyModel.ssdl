@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BootcampManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Regency_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lessons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Regency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Province_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Village">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="District_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_District_Regency">
+    <End Role="Regency" Type="Self.Regency" Multiplicity="1" />
+    <End Role="District" Type="Self.District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="Regency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regency_Province">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="Regency" Type="Self.Regency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Regency">
+        <PropertyRef Name="Province_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Village_District">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="Village" Type="Self.Village" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Village">
+        <PropertyRef Name="District_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BootcampManagementModelStoreContainer">
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regency" EntityType="Self.Regency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Village" EntityType="Self.Village" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_District_Regency" Association="Self.FK_District_Regency">
+      <End Role="Regency" EntitySet="Regency" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regency_Province" Association="Self.FK_Regency_Province">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Regency" EntitySet="Regency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Village_District" Association="Self.FK_Village_District">
+      <End Role="District" EntitySet="District" />
+      <End Role="Village" EntitySet="Village" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

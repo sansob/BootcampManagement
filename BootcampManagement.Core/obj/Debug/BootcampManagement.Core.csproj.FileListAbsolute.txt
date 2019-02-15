@@ -1,0 +1,12 @@
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.exe.config
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.exe
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.pdb
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.dll
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.xml
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csprojAssemblyReference.cache
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csproj.CoreCompileInputs.cache
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csproj.CopyComplete
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.exe
+C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.pdb
