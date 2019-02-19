@@ -20,3 +20,13 @@ C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\D
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.csprojResolveAssemblyReference.cache
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.exe
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.pdb
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.exe.config
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.pdb
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.dll
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.xml
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.csprojResolveAssemblyReference.cache
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.pdb

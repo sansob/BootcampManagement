@@ -34,3 +34,19 @@ C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Common\bin
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csprojAssemblyReference.cache
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csproj.CoreCompileInputs.cache
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csproj.CopyComplete
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.exe.config
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.pdb
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.dll
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.pdb
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.exe.config
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.pdb
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.exe.config
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.xml
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csprojResolveAssemblyReference.cache
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.exe
+D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.pdb
