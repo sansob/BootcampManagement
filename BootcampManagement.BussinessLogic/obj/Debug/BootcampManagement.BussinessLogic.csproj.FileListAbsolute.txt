@@ -59,3 +59,22 @@ D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.BussinessL
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.csprojResolveAssemblyReference.cache
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.exe
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.BussinessLogic.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.BussinessLogic.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.BussinessLogic.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Common.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Core.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Data.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Common.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Common.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Core.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Core.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Data.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\BootcampManagement.Data.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.BussinessLogic\obj\Debug\BootcampManagement.BussinessLogic.pdb
