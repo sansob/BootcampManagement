@@ -30,3 +30,13 @@ D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Core\bin\D
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csprojResolveAssemblyReference.cache
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.exe
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\BootcampManagement.Core.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csprojResolveAssemblyReference.cache
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.pdb

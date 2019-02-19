@@ -50,3 +50,19 @@ D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\bin
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csprojResolveAssemblyReference.cache
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.exe
 D:\Bootcamp\Bootcamp Management\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Common.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Core.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.pdb
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\BootcampManagement.Data.exe.config
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.csprojResolveAssemblyReference.cache
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.exe
+C:\Users\devidba\Documents\GitHub\BootcampManagement\BootcampManagement.Common\obj\Debug\BootcampManagement.Common.pdb
