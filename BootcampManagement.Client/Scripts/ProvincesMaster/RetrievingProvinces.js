@@ -53,6 +53,7 @@ function LoadIndexProvince() {
 }
 
 function Edit() {
+    debugger;
     var province = new Object();
     province.id = $('#Id').val();
     province.name = $('#Name').val();

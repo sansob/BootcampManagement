@@ -22,12 +22,16 @@ namespace BootcampManagement.API
             container.RegisterType<IRegencyRepository, RegencyRepository>();
             container.RegisterType<IDistrictRepository, DistrictRepository>();
             container.RegisterType<IVillageRepository, VillageRepository>();
+            container.RegisterType<IReligionRepository, ReligionRepository>();
+            container.RegisterType<IBatchRepository, BatchRepository>();
 
             container.RegisterType<ILessonService, LessonService>();
             container.RegisterType<IProvinceService, ProvinceService>();
             container.RegisterType<IRegencyService, RegencyService>();
             container.RegisterType<IDistrictService, DistrictService>();
             container.RegisterType<IVillageService, VillageService>();
+            container.RegisterType<IReligionService, ReligionService>();
+            container.RegisterType<IBatchService, BatchService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

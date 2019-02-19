@@ -34,7 +34,8 @@ namespace BootcampManagement.Common.Repositories.Master
 
         public Province Get(int? id)
         {
-            return _context.Provinces.SingleOrDefault(x => x.IsDelete == false);
+            var get = _context.Provinces.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
+            return get;
         }
 
         public bool Insert(ProvinceParam provinceParam)

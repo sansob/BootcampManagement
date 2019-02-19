@@ -14,6 +14,12 @@ namespace BootcampManagement.Data.Model
     
     public partial class Village
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Village()
+        {
+            this.Students = new HashSet<Student>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int District_Id { get; set; }
@@ -23,5 +29,7 @@ namespace BootcampManagement.Data.Model
         public bool IsDelete { get; set; }
     
         public virtual District District { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Batch.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Department.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\District.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -79,13 +85,22 @@
     <Compile Include="Model\Regency.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Religion.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Student.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Village.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Param\BatchParam.cs" />
     <Compile Include="Param\DistrictParam.cs" />
     <Compile Include="Param\LessonParam.cs" />
     <Compile Include="Param\ProvinceParam.cs" />
     <Compile Include="Param\RegencyParam.cs" />
+    <Compile Include="Param\ReligionParam.cs" />
+    <Compile Include="Param\StudentParam.cs" />
     <Compile Include="Param\VillageParam.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +127,15 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Querys\dbo.Batch.sql" />
+    <Content Include="Querys\dbo.Department.sql" />
+    <Content Include="Querys\dbo.District.sql" />
+    <Content Include="Querys\dbo.Lessons.sql" />
+    <Content Include="Querys\dbo.Province.sql" />
+    <Content Include="Querys\dbo.Regency.sql" />
+    <Content Include="Querys\dbo.Religion.sql" />
+    <Content Include="Querys\dbo.Student.sql" />
+    <Content Include="Querys\dbo.Village.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

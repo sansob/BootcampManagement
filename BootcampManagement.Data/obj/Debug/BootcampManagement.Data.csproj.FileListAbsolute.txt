@@ -10,3 +10,13 @@ C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\Bootc
 C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.csproj.CopyComplete
 C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.exe
 C:\Users\NaufalAj\documents\visual studio 2017\Projects\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.pdb
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.exe.config
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.exe
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\BootcampManagement.Data.pdb
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.dll
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.xml
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.csprojResolveAssemblyReference.cache
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.exe
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Data\obj\Debug\BootcampManagement.Data.pdb

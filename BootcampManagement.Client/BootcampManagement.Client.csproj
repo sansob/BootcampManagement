@@ -174,12 +174,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BatchesController.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\RegenciesController.cs" />
+    <Compile Include="Controllers\ReligionsController.cs" />
     <Compile Include="Controllers\VillagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3231,6 +3233,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BatchMaster\RetrievingBatch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\datatables\.bower.json" />
@@ -4063,8 +4066,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LessonMaster\RetrievingLesson.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\ProvincesMaster\RetrievingProvinces.js" />
     <Content Include="Scripts\RegenciesMaster\RetrievingRegencies.js" />
+    <Content Include="Scripts\ReligionMaster\RetrievingReligions.js" />
     <Content Include="Scripts\VillageMaster\RetrievingVillage.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4106,6 +4111,8 @@
     <Content Include="Views\Regencies\Index.cshtml" />
     <Content Include="Views\Districts\Index.cshtml" />
     <Content Include="Views\Villages\Index.cshtml" />
+    <Content Include="Views\Religions\Index.cshtml" />
+    <Content Include="Views\Batches\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

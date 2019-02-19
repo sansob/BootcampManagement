@@ -30,5 +30,9 @@ namespace BootcampManagement.Data.Model
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Regency> Regencies { get; set; }
         public virtual DbSet<Village> Villages { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Religion> Religions { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
     }
 }

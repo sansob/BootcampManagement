@@ -5,6 +5,29 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BootcampManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="District">
           <Key>
             <PropertyRef Name="Id" />
@@ -51,6 +74,42 @@
           <Property Name="IsDelete" Type="bit" Nullable="false" />
           <Property Name="Province_Id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetimeoffset" Precision="7" />
+          <Property Name="PlaceOfBirth" Type="varchar" MaxLength="25" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsSite" Type="bit" Nullable="false" />
+          <Property Name="SecretQuestion" Type="varchar" MaxLength="100" />
+          <Property Name="SecretAnswer" Type="varchar" MaxLength="100" />
+          <Property Name="HiringLocation" Type="varchar" MaxLength="100" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Village_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Village">
           <Key>
             <PropertyRef Name="Id" />
@@ -87,6 +146,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Student_Village">
+          <End Role="Village" Type="Self.Village" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Village">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Village_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Village_District">
           <End Role="District" Type="Self.District" Multiplicity="1" />
           <End Role="Village" Type="Self.Village" Multiplicity="*" />
@@ -100,10 +171,14 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BootcampManagementModelStoreContainer">
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regency" EntityType="Self.Regency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religion" EntityType="Self.Religion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Village" EntityType="Self.Village" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_District_Regency" Association="Self.FK_District_Regency">
             <End Role="Regency" EntitySet="Regency" />
@@ -112,6 +187,10 @@
           <AssociationSet Name="FK_Regency_Province" Association="Self.FK_Regency_Province">
             <End Role="Province" EntitySet="Province" />
             <End Role="Regency" EntitySet="Regency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Village" Association="Self.FK_Student_Village">
+            <End Role="Village" EntitySet="Village" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_Village_District" Association="Self.FK_Village_District">
             <End Role="District" EntitySet="District" />
@@ -150,6 +229,14 @@
           <AssociationSet Name="FK_Regency_Province" Association="BootcampManagementModel.FK_Regency_Province">
             <End Role="Province" EntitySet="Provinces" />
             <End Role="Regency" EntitySet="Regencies" />
+          </AssociationSet>
+          <EntitySet Name="Batches" EntityType="BootcampManagementModel.Batch" />
+          <EntitySet Name="Departments" EntityType="BootcampManagementModel.Department" />
+          <EntitySet Name="Religions" EntityType="BootcampManagementModel.Religion" />
+          <EntitySet Name="Students" EntityType="BootcampManagementModel.Student" />
+          <AssociationSet Name="FK_Student_Village" Association="BootcampManagementModel.FK_Student_Village">
+            <End Role="Village" EntitySet="Villages" />
+            <End Role="Student" EntitySet="Students" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="District">
@@ -201,6 +288,7 @@
           <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="BootcampManagementModel.FK_Student_Village" FromRole="Village" ToRole="Student" />
         </EntityType>
         <Association Name="FK_District_Regency">
           <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="1" />
@@ -235,6 +323,78 @@
             </Principal>
             <Dependent Role="Regency">
               <PropertyRef Name="Province_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTimeOffset" Precision="7" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsSite" Type="Boolean" Nullable="false" />
+          <Property Name="SecretQuestion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecretAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HiringLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="Village_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Village" Relationship="BootcampManagementModel.FK_Student_Village" FromRole="Student" ToRole="Village" />
+        </EntityType>
+        <Association Name="FK_Student_Village">
+          <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="1" />
+          <End Type="BootcampManagementModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Village">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Village_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -303,6 +463,69 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="District_Id" ColumnName="District_Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="BootcampManagementModel.Batch">
+              <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="BootcampManagementModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="BootcampManagementModel.Religion">
+              <MappingFragment StoreEntitySet="Religion">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="BootcampManagementModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Village_Id" ColumnName="Village_Id" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="HiringLocation" ColumnName="HiringLocation" />
+                <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
+                <ScalarProperty Name="SecretQuestion" ColumnName="SecretQuestion" />
+                <ScalarProperty Name="IsSite" ColumnName="IsSite" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
