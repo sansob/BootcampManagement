@@ -5,6 +5,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="15" />
     <Property Name="StartDate" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="EndDate" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />

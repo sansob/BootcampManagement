@@ -1,14 +1,16 @@
 ﻿$(function() {
-    $("#startdate").datepicker();
+    $('#startdate').datepicker({
+        daysOfWeekDisabled: [0, 6]
+    });
     $("#enddate").datepicker();
 });
 
 function getEndDate() {
-    var day = moment($("#startdate").val(), "DD/MM/YYYY");
+    var day = moment($("#startdate").val(), 'MM/DD/YYYY');
+   
+    day.add(2, 'months');
 
-    day.add('months', 2);
-
-    $("#enddate").val(day.format("DD/MM/YYYY"));
+    $("#enddate").val(day.format("MM/DD/YYYY"));
 }
 
 $(document).ready(function () {
@@ -20,6 +22,7 @@ $(document).ready(function () {
 
 function Save() {
     var batch = new Object();
+    batch.name = $('#Name').val();
     batch.startdate = $('#startdate').val();
     batch.enddate = $('#enddate').val();
     $.ajax({
@@ -53,11 +56,13 @@ function LoadIndexBatch() {
             var html = '';
             var i = 1;
             $.each(data, function (index, val) {
+                StartDate = moment(val.StartDate).format('DD/MM/YYYY');
+                EndDate = moment(val.EndDate).format('DD/MM/YYYY');
                 html += '<tr>';
                 html += '<td>' + i + '</td>';
-                html += '<td>' + val.Id + '</td>';
-                html += '<td>' + val.StartDate + '</td>';
-                html += '<td>' + val.EndDate + '</td>';
+                html += '<td>' + val.Name + '</td>';
+                html += '<td>' + StartDate + '</td>';
+                html += '<td>' + EndDate + '</td>';
                 html += '<td> <a href="#" class="fa fa-pencil" onclick="return GetById(' + val.Id + ')"></a>';
                 html += ' | <a href="#" class="fa fa-trash" onclick="return Delete(' + val.Id + ')"></a></td>';
                 html += '</tr>';
@@ -144,6 +149,7 @@ function ClearScreen() {
     $('#startdate').val('');
     $('#enddate').val('');
     $('#Id').val('');
+    $('#Name').val('');
     $('#Update').hide();
     $('#Save').show();
 }

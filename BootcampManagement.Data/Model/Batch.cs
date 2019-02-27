@@ -21,5 +21,6 @@ namespace BootcampManagement.Data.Model
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
+        public string Name { get; set; }
     }
 }

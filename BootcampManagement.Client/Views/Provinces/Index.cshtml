@@ -3,7 +3,7 @@
 }
 <div class="container-fluid">
     <hr />
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="">Create New</button><br /><br />
+    <button type="button" id="Create" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="ClearScreen();">Create New</button><br /><br />
     <table class="table table-hover" id="table">
         <thead>
             <tr>
@@ -32,7 +32,7 @@
                 <form>
                     <div class="form-group">
                         <label for="Id">Id</label>
-                        <input type="text" class="form-control" id="Id" placeholder="Id" disabled="disabled" />
+                        <input type="text" class="form-control" id="Id" placeholder="Id" disabled="disabled"/>
                     </div>
                     <div class="form-group">
                         <label for="Name">Name</label>
@@ -41,8 +41,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="Save" onclick="Save();">Add</button>
-                <button type="button" class="btn btn-primary" id="Update" style="display:none;" onclick="Edit();">Update</button>
+                <button type="button" class="btn btn-primary" id="Save" onclick="Validate();">Add</button>
+                <button type="button" class="btn btn-primary" id="Update" style="display:none;" onclick="Validate();">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

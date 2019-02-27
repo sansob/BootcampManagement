@@ -11,7 +11,7 @@ using System.Web.Http.Cors;
 
 namespace BootcampManagement.API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BatchesController : ApiController
     {
         private readonly IBatchService _batchService;

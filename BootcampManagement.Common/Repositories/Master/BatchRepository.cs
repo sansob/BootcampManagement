@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BootcampManagement.Data;
 using BootcampManagement.Data.Model;
 using BootcampManagement.Data.Param;
 
@@ -10,21 +11,16 @@ namespace BootcampManagement.Common.Repositories.Master
 {
     public class BatchRepository : IBatchRepository
     {
-        bool status = false;
-        MyContext myContext = new MyContext();
+        static MyContext myContext = new MyContext();
         Batch batch = new Batch();
+        SaveChange saveChange = new SaveChange(myContext);
 
         public bool Delete(int? id)
         {
             var get = Get(id);
             get.IsDelete = true;
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public List<Batch> Get()
@@ -39,16 +35,12 @@ namespace BootcampManagement.Common.Repositories.Master
 
         public bool Insert(BatchParam batchParam)
         {
+            batch.Name = batchParam.Name;
             batch.StartDate = Convert.ToDateTime(batchParam.StartDate);
             batch.EndDate = Convert.ToDateTime(batchParam.EndDate);
             batch.CreateDate = DateTimeOffset.Now.LocalDateTime;
             myContext.Batches.Add(batch);
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public bool Update(int? id, BatchParam batchParam)
@@ -57,12 +49,7 @@ namespace BootcampManagement.Common.Repositories.Master
             get.StartDate = Convert.ToDateTime(batchParam.StartDate);
             get.EndDate = Convert.ToDateTime(batchParam.EndDate);
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
     }
 }

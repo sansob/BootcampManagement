@@ -2,7 +2,7 @@
     LoadIndexProvince();
     $('#table').DataTable({
         "ajax": LoadIndexProvince()
-    })
+    });
 })
 
 function Save() {
@@ -129,4 +129,15 @@ function ClearScreen() {
     $('#Id').val('');
     $('#Update').hide();
     $('#Save').show();
+}
+
+function Validate() {
+    debugger;
+    if ($('#Name').val() == "" || $('#Name').val() == " ") {
+        swal("Oops", "Please Insert Name", "error")
+    } else if ($('#Id').val() == "") {
+        Save();
+    } else {
+        Edit();
+    }
 }

@@ -10,6 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="15" />
           <Property Name="StartDate" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
@@ -337,6 +338,7 @@
           <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -470,6 +472,7 @@
           <EntitySetMapping Name="Batches">
             <EntityTypeMapping TypeName="BootcampManagementModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />

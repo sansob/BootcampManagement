@@ -67,6 +67,7 @@
     <EntitySetMapping Name="Batches">
       <EntityTypeMapping TypeName="BootcampManagementModel.Batch">
         <MappingFragment StoreEntitySet="Batch">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
           <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />

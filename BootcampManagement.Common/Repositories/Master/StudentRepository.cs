@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BootcampManagement.Data;
 using BootcampManagement.Data.Model;
 using BootcampManagement.Data.Param;
 
@@ -10,31 +11,26 @@ namespace BootcampManagement.Common.Repositories.Master
 {
     public class StudentRepository : IStudentRepository
     {
-        private bool status = false;
-        MyContext _context = new MyContext();
+        static MyContext myContext = new MyContext();
         Student student = new Student();
+        SaveChange saveChange = new SaveChange(myContext);
 
         public bool Delete(int? id)
         {
             var get = Get(id);
             get.IsDelete = true;
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
-            var result = _context.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public List<Student> Get()
         {
-            return _context.Students.Where(x => x.IsDelete == false).ToList();
+            return myContext.Students.Where(x => x.IsDelete == false).ToList();
         }
 
         public Student Get(int? id)
         {
-            return _context.Students.SingleOrDefault(x => x.IsDelete == false);
+            return myContext.Students.SingleOrDefault(x => x.IsDelete == false);
         }
 
         public bool Insert(StudentParam studentParam)
@@ -46,13 +42,8 @@ namespace BootcampManagement.Common.Repositories.Master
             student.LastName = studentParam.LastName;
             student.CreateDate = DateTimeOffset.Now.LocalDateTime;
             //var getVillage
-            _context.Students.Add(student);
-            var result = _context.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            myContext.Students.Add(student);
+            return saveChange.save();
         }
 
         public bool Update(int? id, StudentParam studentParam)
@@ -64,12 +55,7 @@ namespace BootcampManagement.Common.Repositories.Master
             get.FirstName = studentParam.FirstName;
             get.LastName = studentParam.LastName;
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            var result = _context.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
     }
 }

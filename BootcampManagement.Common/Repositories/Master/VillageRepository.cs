@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BootcampManagement.Data;
 using BootcampManagement.Data.Model;
 using BootcampManagement.Data.Param;
 
@@ -10,21 +11,16 @@ namespace BootcampManagement.Common.Repositories.Master
 {
     public class VillageRepository : IVillageRepository
     {
-        bool status = false;
-        MyContext myContext = new MyContext();
+        static MyContext myContext = new MyContext();
         Village village = new Village();
+        SaveChange saveChange = new SaveChange(myContext);
 
         public bool Delete(int? id)
         {
             var get = Get(id);
             get.IsDelete = true;
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public List<Village> Get()
@@ -44,12 +40,7 @@ namespace BootcampManagement.Common.Repositories.Master
             village.District = getDistrict;
             village.CreateDate = DateTimeOffset.Now.LocalDateTime;
             myContext.Villages.Add(village);
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public bool Update(int? id, VillageParam villageParam)
@@ -59,12 +50,7 @@ namespace BootcampManagement.Common.Repositories.Master
             var getDistrict = myContext.Districts.Find(villageParam.District_Id);
             get.District = getDistrict;
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            var result = myContext.SaveChanges();
-            if (result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
     }
 }

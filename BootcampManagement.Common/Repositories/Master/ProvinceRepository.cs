@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BootcampManagement.Data;
 using BootcampManagement.Data.Model;
 using BootcampManagement.Data.Param;
 
@@ -10,31 +11,26 @@ namespace BootcampManagement.Common.Repositories.Master
 {
     public class ProvinceRepository : IProvinceRepository
     {
-        private bool status = false;
-        MyContext _context = new MyContext();
+        static MyContext myContext = new MyContext();
         Province province = new Province();
+        SaveChange saveChange = new SaveChange(myContext);
 
         public bool Delete(int? id)
         {
             var get = Get(id);
             get.IsDelete = true;
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
-            var result = _context.SaveChanges();
-            if(result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
 
         public List<Province> Get()
         {
-            return _context.Provinces.Where(x => x.IsDelete == false).ToList();
+            return myContext.Provinces.Where(x => x.IsDelete == false).ToList();
         }
 
         public Province Get(int? id)
         {
-            var get = _context.Provinces.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
+            var get = myContext.Provinces.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
             return get;
         }
 
@@ -42,13 +38,8 @@ namespace BootcampManagement.Common.Repositories.Master
         {
             province.Name = provinceParam.Name;
             province.CreateDate = DateTimeOffset.Now.LocalDateTime;
-            _context.Provinces.Add(province);
-            var result = _context.SaveChanges();
-            if(result > 0)
-            {
-                status = true;
-            }
-            return status;
+            myContext.Provinces.Add(province);
+            return saveChange.save();
         }
 
         public bool Update(int? id, ProvinceParam provinceParam)
@@ -56,12 +47,7 @@ namespace BootcampManagement.Common.Repositories.Master
             var get = Get(id);
             get.Name = provinceParam.Name;
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            var result = _context.SaveChanges();
-            if(result > 0)
-            {
-                status = true;
-            }
-            return status;
+            return saveChange.save();
         }
     }
 }
