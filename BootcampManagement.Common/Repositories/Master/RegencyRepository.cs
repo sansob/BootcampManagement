@@ -14,7 +14,6 @@ namespace BootcampManagement.Common.Repositories.Master
     {
         static MyContext myContext = new MyContext();
         Regency regency = new Regency();
-        SaveChange saveChange = new SaveChange(myContext);
 
         bool status = false;
 
@@ -23,7 +22,8 @@ namespace BootcampManagement.Common.Repositories.Master
             var get = Get(id);
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
             get.IsDelete = true;
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
 
         public List<Regency> Get()
@@ -45,7 +45,8 @@ namespace BootcampManagement.Common.Repositories.Master
             regency.Province = getProvince;
             regency.CreateDate = DateTimeOffset.Now.LocalDateTime;
             myContext.Regencies.Add(regency);
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
 
         public bool Update(int? id, RegencyParam regencyParam)
@@ -55,7 +56,8 @@ namespace BootcampManagement.Common.Repositories.Master
             var getProvince = myContext.Provinces.Find(regencyParam.Province_Id);
             get.Province = getProvince;
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
     }
 }

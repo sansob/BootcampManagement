@@ -14,7 +14,6 @@ using System.Web.Mvc;
 
 namespace BootcampManagement.API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RegenciesController : ApiController
     {
         private readonly IRegencyService _regencyService;

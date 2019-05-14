@@ -11,16 +11,17 @@ namespace BootcampManagement.Common.Repositories.Master
 {
     public class ProvinceRepository : IProvinceRepository
     {
-        static MyContext myContext = new MyContext();
+        MyContext myContext = new MyContext();
         Province province = new Province();
-        SaveChange saveChange = new SaveChange(myContext);
+        //SaveChange saveChange = new SaveChange(myContext);
 
         public bool Delete(int? id)
         {
             var get = Get(id);
             get.IsDelete = true;
             get.DeleteDate = DateTimeOffset.Now.LocalDateTime;
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
 
         public List<Province> Get()
@@ -39,7 +40,8 @@ namespace BootcampManagement.Common.Repositories.Master
             province.Name = provinceParam.Name;
             province.CreateDate = DateTimeOffset.Now.LocalDateTime;
             myContext.Provinces.Add(province);
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
 
         public bool Update(int? id, ProvinceParam provinceParam)
@@ -47,7 +49,8 @@ namespace BootcampManagement.Common.Repositories.Master
             var get = Get(id);
             get.Name = provinceParam.Name;
             get.UpdateDate = DateTimeOffset.Now.LocalDateTime;
-            return saveChange.save();
+            var result = myContext.SaveChanges();
+            return result > 0;
         }
     }
 }

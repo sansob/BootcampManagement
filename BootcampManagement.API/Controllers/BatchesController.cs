@@ -1,4 +1,5 @@
 ﻿using BootcampManagement.BussinessLogic.Service;
+using BootcampManagement.BussinessLogic.Service.Master;
 using BootcampManagement.Data.Model;
 using BootcampManagement.Data.Param;
 using System;
@@ -11,7 +12,6 @@ using System.Web.Http.Cors;
 
 namespace BootcampManagement.API.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BatchesController : ApiController
     {
         private readonly IBatchService _batchService;
@@ -22,6 +22,8 @@ namespace BootcampManagement.API.Controllers
         {
             _batchService = batchService;
         }
+
+        BatchService batchService = new BatchService(); 
 
         // GET: api/Batchs
         public IEnumerable<Batch> Get()

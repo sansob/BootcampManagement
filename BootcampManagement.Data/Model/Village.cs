@@ -17,19 +17,28 @@ namespace BootcampManagement.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Village()
         {
+            this.Companies = new HashSet<Company>();
+            this.Employees = new HashSet<Employee>();
             this.Students = new HashSet<Student>();
+            this.Universities = new HashSet<University>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int District_Id { get; set; }
         public System.DateTimeOffset CreateDate { get; set; }
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
+        public int District_Id { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company> Companies { get; set; }
         public virtual District District { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<University> Universities { get; set; }
     }
 }

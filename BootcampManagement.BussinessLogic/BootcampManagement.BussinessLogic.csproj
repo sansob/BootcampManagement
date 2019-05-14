@@ -53,6 +53,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IBatchService.cs" />
+    <Compile Include="Service\ICompanyService.cs" />
     <Compile Include="Service\IDistrictService.cs" />
     <Compile Include="Service\ILessonService.cs" />
     <Compile Include="Service\IProvinceService.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Service\IStudentService.cs" />
     <Compile Include="Service\IVillageService.cs" />
     <Compile Include="Service\Master\BatchService.cs" />
+    <Compile Include="Service\Master\CompanyService.cs" />
     <Compile Include="Service\Master\DistrictService.cs" />
     <Compile Include="Service\Master\LessonService.cs" />
     <Compile Include="Service\Master\ProvinceService.cs" />

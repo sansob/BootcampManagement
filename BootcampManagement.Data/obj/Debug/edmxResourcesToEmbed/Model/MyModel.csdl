@@ -1,22 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BootcampManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Lesson">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-  </EntityType>
   <EntityContainer Name="MyContext" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+    <EntitySet Name="Access_Card" EntityType="BootcampManagementModel.Access_Card" />
+    <EntitySet Name="Achievements" EntityType="BootcampManagementModel.Achievement" />
+    <EntitySet Name="Batches" EntityType="BootcampManagementModel.Batch" />
+    <EntitySet Name="Categories" EntityType="BootcampManagementModel.Category" />
+    <EntitySet Name="Certifications" EntityType="BootcampManagementModel.Certification" />
+    <EntitySet Name="Classes" EntityType="BootcampManagementModel.Class" />
+    <EntitySet Name="Companies" EntityType="BootcampManagementModel.Company" />
+    <EntitySet Name="Degrees" EntityType="BootcampManagementModel.Degree" />
+    <EntitySet Name="Departments" EntityType="BootcampManagementModel.Department" />
     <EntitySet Name="Districts" EntityType="BootcampManagementModel.District" />
+    <EntitySet Name="Educations" EntityType="BootcampManagementModel.Education" />
+    <EntitySet Name="Education_History" EntityType="BootcampManagementModel.Education_History" />
+    <EntitySet Name="Employees" EntityType="BootcampManagementModel.Employee" />
+    <EntitySet Name="Employee_Access" EntityType="BootcampManagementModel.Employee_Access" />
+    <EntitySet Name="Employee_Certification" EntityType="BootcampManagementModel.Employee_Certification" />
+    <EntitySet Name="Employee_Language" EntityType="BootcampManagementModel.Employee_Language" />
+    <EntitySet Name="Employee_Locker" EntityType="BootcampManagementModel.Employee_Locker" />
+    <EntitySet Name="Employee_Role" EntityType="BootcampManagementModel.Employee_Role" />
+    <EntitySet Name="Employee_Skill" EntityType="BootcampManagementModel.Employee_Skill" />
+    <EntitySet Name="Id_Card" EntityType="BootcampManagementModel.Id_Card" />
+    <EntitySet Name="Languages" EntityType="BootcampManagementModel.Language" />
+    <EntitySet Name="Lessons" EntityType="BootcampManagementModel.Lesson" />
+    <EntitySet Name="Lockers" EntityType="BootcampManagementModel.Locker" />
+    <EntitySet Name="Majors" EntityType="BootcampManagementModel.Major" />
+    <EntitySet Name="Organizations" EntityType="BootcampManagementModel.Organization" />
+    <EntitySet Name="Placements" EntityType="BootcampManagementModel.Placement" />
     <EntitySet Name="Provinces" EntityType="BootcampManagementModel.Province" />
     <EntitySet Name="Regencies" EntityType="BootcampManagementModel.Regency" />
+    <EntitySet Name="Religions" EntityType="BootcampManagementModel.Religion" />
+    <EntitySet Name="Roles" EntityType="BootcampManagementModel.Role" />
+    <EntitySet Name="Rooms" EntityType="BootcampManagementModel.Room" />
+    <EntitySet Name="Skills" EntityType="BootcampManagementModel.Skill" />
+    <EntitySet Name="Students" EntityType="BootcampManagementModel.Student" />
+    <EntitySet Name="Universities" EntityType="BootcampManagementModel.University" />
     <EntitySet Name="Villages" EntityType="BootcampManagementModel.Village" />
+    <EntitySet Name="Work_Experience" EntityType="BootcampManagementModel.Work_Experience" />
+    <AssociationSet Name="FK_Employee_Access_Access" Association="BootcampManagementModel.FK_Employee_Access_Access">
+      <End Role="Access_Card" EntitySet="Access_Card" />
+      <End Role="Employee_Access" EntitySet="Employee_Access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Achievement_Employee" Association="BootcampManagementModel.FK_Achievement_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Achievement" EntitySet="Achievements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Skill_Category" Association="BootcampManagementModel.FK_Skill_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Skill" EntitySet="Skills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Certification_Certification" Association="BootcampManagementModel.FK_Employee_Certification_Certification">
+      <End Role="Certification" EntitySet="Certifications" />
+      <End Role="Employee_Certification" EntitySet="Employee_Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Village" Association="BootcampManagementModel.FK_Company_Village">
+      <End Role="Village" EntitySet="Villages" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Placement_Company" Association="BootcampManagementModel.FK_Placement_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Placement" EntitySet="Placements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Education_Degree" Association="BootcampManagementModel.FK_Education_Degree">
+      <End Role="Degree" EntitySet="Degrees" />
+      <End Role="Education" EntitySet="Educations" />
+    </AssociationSet>
     <AssociationSet Name="FK_District_Regency" Association="BootcampManagementModel.FK_District_Regency">
       <End Role="Regency" EntitySet="Regencies" />
       <End Role="District" EntitySet="Districts" />
@@ -25,118 +73,206 @@
       <End Role="District" EntitySet="Districts" />
       <End Role="Village" EntitySet="Villages" />
     </AssociationSet>
+    <AssociationSet Name="FK_Education_History_Education" Association="BootcampManagementModel.FK_Education_History_Education">
+      <End Role="Education" EntitySet="Educations" />
+      <End Role="Education_History" EntitySet="Education_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Education_Major" Association="BootcampManagementModel.FK_Education_Major">
+      <End Role="Major" EntitySet="Majors" />
+      <End Role="Education" EntitySet="Educations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Education_University" Association="BootcampManagementModel.FK_Education_University">
+      <End Role="University" EntitySet="Universities" />
+      <End Role="Education" EntitySet="Educations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Education_History_Employee" Association="BootcampManagementModel.FK_Education_History_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Education_History" EntitySet="Education_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Access_Employee" Association="BootcampManagementModel.FK_Employee_Access_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Access" EntitySet="Employee_Access" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Certification_Employee" Association="BootcampManagementModel.FK_Employee_Certification_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Certification" EntitySet="Employee_Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Hiring_Location" Association="BootcampManagementModel.FK_Employee_Hiring_Location">
+      <End Role="Regency" EntitySet="Regencies" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Language_Employee" Association="BootcampManagementModel.FK_Employee_Language_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Language" EntitySet="Employee_Language" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Locker_Employee" Association="BootcampManagementModel.FK_Employee_Locker_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Locker" EntitySet="Employee_Locker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_PlaceOfBirth" Association="BootcampManagementModel.FK_Employee_PlaceOfBirth">
+      <End Role="Regency" EntitySet="Regencies" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Religion" Association="BootcampManagementModel.FK_Employee_Religion">
+      <End Role="Religion" EntitySet="Religions" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Role_Employee" Association="BootcampManagementModel.FK_Employee_Role_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Role" EntitySet="Employee_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Skill_Employee" Association="BootcampManagementModel.FK_Employee_Skill_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee_Skill" EntitySet="Employee_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Village" Association="BootcampManagementModel.FK_Employee_Village">
+      <End Role="Village" EntitySet="Villages" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Id_Card_Employee" Association="BootcampManagementModel.FK_Id_Card_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Id_Card" EntitySet="Id_Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_Employee" Association="BootcampManagementModel.FK_Organization_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Placement_Employee" Association="BootcampManagementModel.FK_Placement_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Placement" EntitySet="Placements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Work_Experience_Employee" Association="BootcampManagementModel.FK_Work_Experience_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Work_Experience" EntitySet="Work_Experience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Language_Language" Association="BootcampManagementModel.FK_Employee_Language_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Employee_Language" EntitySet="Employee_Language" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Locker_Locker" Association="BootcampManagementModel.FK_Employee_Locker_Locker">
+      <End Role="Locker" EntitySet="Lockers" />
+      <End Role="Employee_Locker" EntitySet="Employee_Locker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Role_Role" Association="BootcampManagementModel.FK_Employee_Role_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Employee_Role" EntitySet="Employee_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Skill_Skill" Association="BootcampManagementModel.FK_Employee_Skill_Skill">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="Employee_Skill" EntitySet="Employee_Skill" />
+    </AssociationSet>
     <AssociationSet Name="FK_Regency_Province" Association="BootcampManagementModel.FK_Regency_Province">
       <End Role="Province" EntitySet="Provinces" />
       <End Role="Regency" EntitySet="Regencies" />
     </AssociationSet>
-    <EntitySet Name="Batches" EntityType="BootcampManagementModel.Batch" />
-    <EntitySet Name="Departments" EntityType="BootcampManagementModel.Department" />
-    <EntitySet Name="Religions" EntityType="BootcampManagementModel.Religion" />
-    <EntitySet Name="Students" EntityType="BootcampManagementModel.Student" />
     <AssociationSet Name="FK_Student_Village" Association="BootcampManagementModel.FK_Student_Village">
       <End Role="Village" EntitySet="Villages" />
       <End Role="Student" EntitySet="Students" />
     </AssociationSet>
+    <AssociationSet Name="FK_University_Village" Association="BootcampManagementModel.FK_University_Village">
+      <End Role="Village" EntitySet="Villages" />
+      <End Role="University" EntitySet="Universities" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="District">
+  <EntityType Name="Access_Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="AccessNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employee_Access" Relationship="BootcampManagementModel.FK_Employee_Access_Access" FromRole="Access_Card" ToRole="Employee_Access" />
+  </EntityType>
+  <EntityType Name="Achievement">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Regency_Id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Regency" Relationship="BootcampManagementModel.FK_District_Regency" FromRole="District" ToRole="Regency" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
     <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Achievement_Employee" FromRole="Achievement" ToRole="Employee" />
   </EntityType>
-  <EntityType Name="Province">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Regency">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Province_Id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Province" Relationship="BootcampManagementModel.FK_Regency_Province" FromRole="Regency" ToRole="Province" />
-    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Village">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="District_Id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="District" Relationship="BootcampManagementModel.FK_Village_District" FromRole="Village" ToRole="District" />
-    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Students" Relationship="BootcampManagementModel.FK_Student_Village" FromRole="Village" ToRole="Student" />
-  </EntityType>
-  <Association Name="FK_District_Regency">
-    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="1" />
-    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Regency">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="District">
-        <PropertyRef Name="Regency_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Village_District">
-    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="1" />
-    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="District">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Village">
-        <PropertyRef Name="District_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Regency_Province">
-    <End Type="BootcampManagementModel.Province" Role="Province" Multiplicity="1" />
-    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Province">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Regency">
-        <PropertyRef Name="Province_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Batch">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="StartDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="EndDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Skills" Relationship="BootcampManagementModel.FK_Skill_Category" FromRole="Category" ToRole="Skill" />
+  </EntityType>
+  <EntityType Name="Certification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employee_Certification" Relationship="BootcampManagementModel.FK_Employee_Certification_Certification" FromRole="Certification" ToRole="Employee_Certification" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Village_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Village" Relationship="BootcampManagementModel.FK_Company_Village" FromRole="Company" ToRole="Village" />
+    <NavigationProperty Name="Placements" Relationship="BootcampManagementModel.FK_Placement_Company" FromRole="Company" ToRole="Placement" />
+  </EntityType>
+  <EntityType Name="Degree">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Educations" Relationship="BootcampManagementModel.FK_Education_Degree" FromRole="Degree" ToRole="Education" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -149,6 +285,303 @@
     <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="IsDelete" Type="Boolean" Nullable="false" />
   </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Regency_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Regency" Relationship="BootcampManagementModel.FK_District_Regency" FromRole="District" ToRole="Regency" />
+    <NavigationProperty Name="Villages" Relationship="BootcampManagementModel.FK_Village_District" FromRole="District" ToRole="Village" />
+  </EntityType>
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Degree_Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Major_Id" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="University_Id" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Degree" Relationship="BootcampManagementModel.FK_Education_Degree" FromRole="Education" ToRole="Degree" />
+    <NavigationProperty Name="Education_History" Relationship="BootcampManagementModel.FK_Education_History_Education" FromRole="Education" ToRole="Education_History" />
+    <NavigationProperty Name="Major" Relationship="BootcampManagementModel.FK_Education_Major" FromRole="Education" ToRole="Major" />
+    <NavigationProperty Name="University" Relationship="BootcampManagementModel.FK_Education_University" FromRole="Education" ToRole="University" />
+  </EntityType>
+  <EntityType Name="Education_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Education_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Education" Relationship="BootcampManagementModel.FK_Education_History_Education" FromRole="Education_History" ToRole="Education" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Education_History_Employee" FromRole="Education_History" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="PlaceOfBirth" Type="Int32" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsSite" Type="Boolean" Nullable="false" />
+    <Property Name="SecretQuestion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SecretAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="HiringLocation" Type="Int32" />
+    <Property Name="Religion_Id" Type="Int32" />
+    <Property Name="Village_Id" Type="Int32" />
+    <NavigationProperty Name="Achievements" Relationship="BootcampManagementModel.FK_Achievement_Employee" FromRole="Employee" ToRole="Achievement" />
+    <NavigationProperty Name="Education_History" Relationship="BootcampManagementModel.FK_Education_History_Employee" FromRole="Employee" ToRole="Education_History" />
+    <NavigationProperty Name="Employee_Access" Relationship="BootcampManagementModel.FK_Employee_Access_Employee" FromRole="Employee" ToRole="Employee_Access" />
+    <NavigationProperty Name="Employee_Certification" Relationship="BootcampManagementModel.FK_Employee_Certification_Employee" FromRole="Employee" ToRole="Employee_Certification" />
+    <NavigationProperty Name="Regency" Relationship="BootcampManagementModel.FK_Employee_Hiring_Location" FromRole="Employee" ToRole="Regency" />
+    <NavigationProperty Name="Employee_Language" Relationship="BootcampManagementModel.FK_Employee_Language_Employee" FromRole="Employee" ToRole="Employee_Language" />
+    <NavigationProperty Name="Employee_Locker" Relationship="BootcampManagementModel.FK_Employee_Locker_Employee" FromRole="Employee" ToRole="Employee_Locker" />
+    <NavigationProperty Name="Regency1" Relationship="BootcampManagementModel.FK_Employee_PlaceOfBirth" FromRole="Employee" ToRole="Regency" />
+    <NavigationProperty Name="Religion" Relationship="BootcampManagementModel.FK_Employee_Religion" FromRole="Employee" ToRole="Religion" />
+    <NavigationProperty Name="Employee_Role" Relationship="BootcampManagementModel.FK_Employee_Role_Employee" FromRole="Employee" ToRole="Employee_Role" />
+    <NavigationProperty Name="Employee_Skill" Relationship="BootcampManagementModel.FK_Employee_Skill_Employee" FromRole="Employee" ToRole="Employee_Skill" />
+    <NavigationProperty Name="Village" Relationship="BootcampManagementModel.FK_Employee_Village" FromRole="Employee" ToRole="Village" />
+    <NavigationProperty Name="Id_Card" Relationship="BootcampManagementModel.FK_Id_Card_Employee" FromRole="Employee" ToRole="Id_Card" />
+    <NavigationProperty Name="Organizations" Relationship="BootcampManagementModel.FK_Organization_Employee" FromRole="Employee" ToRole="Organization" />
+    <NavigationProperty Name="Placements" Relationship="BootcampManagementModel.FK_Placement_Employee" FromRole="Employee" ToRole="Placement" />
+    <NavigationProperty Name="Work_Experience" Relationship="BootcampManagementModel.FK_Work_Experience_Employee" FromRole="Employee" ToRole="Work_Experience" />
+  </EntityType>
+  <EntityType Name="Employee_Access">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Access_Id" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Access_Card" Relationship="BootcampManagementModel.FK_Employee_Access_Access" FromRole="Employee_Access" ToRole="Access_Card" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Access_Employee" FromRole="Employee_Access" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee_Certification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Certification_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Certification" Relationship="BootcampManagementModel.FK_Employee_Certification_Certification" FromRole="Employee_Certification" ToRole="Certification" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Certification_Employee" FromRole="Employee_Certification" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee_Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Language_Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Language_Employee" FromRole="Employee_Language" ToRole="Employee" />
+    <NavigationProperty Name="Language" Relationship="BootcampManagementModel.FK_Employee_Language_Language" FromRole="Employee_Language" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Employee_Locker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Locker_Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Locker_Employee" FromRole="Employee_Locker" ToRole="Employee" />
+    <NavigationProperty Name="Locker" Relationship="BootcampManagementModel.FK_Employee_Locker_Locker" FromRole="Employee_Locker" ToRole="Locker" />
+  </EntityType>
+  <EntityType Name="Employee_Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Role_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Role_Employee" FromRole="Employee_Role" ToRole="Employee" />
+    <NavigationProperty Name="Role" Relationship="BootcampManagementModel.FK_Employee_Role_Role" FromRole="Employee_Role" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Employee_Skill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Skill_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Employee_Skill_Employee" FromRole="Employee_Skill" ToRole="Employee" />
+    <NavigationProperty Name="Skill" Relationship="BootcampManagementModel.FK_Employee_Skill_Skill" FromRole="Employee_Skill" ToRole="Skill" />
+  </EntityType>
+  <EntityType Name="Id_Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Id_Card_Employee" FromRole="Id_Card" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employee_Language" Relationship="BootcampManagementModel.FK_Employee_Language_Language" FromRole="Language" ToRole="Employee_Language" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="LockerNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employee_Locker" Relationship="BootcampManagementModel.FK_Employee_Locker_Locker" FromRole="Locker" ToRole="Employee_Locker" />
+  </EntityType>
+  <EntityType Name="Major">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Educations" Relationship="BootcampManagementModel.FK_Education_Major" FromRole="Major" ToRole="Education" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Organization_Employee" FromRole="Organization" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Placement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Company_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="BootcampManagementModel.FK_Placement_Company" FromRole="Placement" ToRole="Company" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Placement_Employee" FromRole="Placement" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Regencies" Relationship="BootcampManagementModel.FK_Regency_Province" FromRole="Province" ToRole="Regency" />
+  </EntityType>
+  <EntityType Name="Regency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Province_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Districts" Relationship="BootcampManagementModel.FK_District_Regency" FromRole="Regency" ToRole="District" />
+    <NavigationProperty Name="Employees" Relationship="BootcampManagementModel.FK_Employee_Hiring_Location" FromRole="Regency" ToRole="Employee" />
+    <NavigationProperty Name="Employees1" Relationship="BootcampManagementModel.FK_Employee_PlaceOfBirth" FromRole="Regency" ToRole="Employee" />
+    <NavigationProperty Name="Province" Relationship="BootcampManagementModel.FK_Regency_Province" FromRole="Regency" ToRole="Province" />
+  </EntityType>
   <EntityType Name="Religion">
     <Key>
       <PropertyRef Name="Id" />
@@ -159,6 +592,44 @@
     <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
     <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="BootcampManagementModel.FK_Employee_Religion" FromRole="Religion" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Employee_Role" Relationship="BootcampManagementModel.FK_Employee_Role_Role" FromRole="Role" ToRole="Employee_Role" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Category_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="BootcampManagementModel.FK_Skill_Category" FromRole="Skill" ToRole="Category" />
+    <NavigationProperty Name="Employee_Skill" Relationship="BootcampManagementModel.FK_Employee_Skill_Skill" FromRole="Skill" ToRole="Employee_Skill" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -186,6 +657,438 @@
     <Property Name="Village_Id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Village" Relationship="BootcampManagementModel.FK_Student_Village" FromRole="Student" ToRole="Village" />
   </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Village_Id" Type="Int32" />
+    <NavigationProperty Name="Educations" Relationship="BootcampManagementModel.FK_Education_University" FromRole="University" ToRole="Education" />
+    <NavigationProperty Name="Village" Relationship="BootcampManagementModel.FK_University_Village" FromRole="University" ToRole="Village" />
+  </EntityType>
+  <EntityType Name="Village">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="District_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="BootcampManagementModel.FK_Company_Village" FromRole="Village" ToRole="Company" />
+    <NavigationProperty Name="District" Relationship="BootcampManagementModel.FK_Village_District" FromRole="Village" ToRole="District" />
+    <NavigationProperty Name="Employees" Relationship="BootcampManagementModel.FK_Employee_Village" FromRole="Village" ToRole="Employee" />
+    <NavigationProperty Name="Students" Relationship="BootcampManagementModel.FK_Student_Village" FromRole="Village" ToRole="Student" />
+    <NavigationProperty Name="Universities" Relationship="BootcampManagementModel.FK_University_Village" FromRole="Village" ToRole="University" />
+  </EntityType>
+  <EntityType Name="Work_Experience">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="DeleteDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+    <Property Name="Employee_Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="BootcampManagementModel.FK_Work_Experience_Employee" FromRole="Work_Experience" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_Employee_Access_Access">
+    <End Type="BootcampManagementModel.Access_Card" Role="Access_Card" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Access" Role="Employee_Access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Access_Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Access">
+        <PropertyRef Name="Access_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Achievement_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Achievement" Role="Achievement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Achievement">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Skill_Category">
+    <End Type="BootcampManagementModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Skill" Role="Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Skill">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Certification_Certification">
+    <End Type="BootcampManagementModel.Certification" Role="Certification" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Certification" Role="Employee_Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Certification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Certification">
+        <PropertyRef Name="Certification_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Village">
+    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Village">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="Village_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Placement_Company">
+    <End Type="BootcampManagementModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Placement" Role="Placement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Placement">
+        <PropertyRef Name="Company_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_Degree">
+    <End Type="BootcampManagementModel.Degree" Role="Degree" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Education" Role="Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Degree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="Degree_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_Regency">
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="1" />
+    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="Regency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Village_District">
+    <End Type="BootcampManagementModel.District" Role="District" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Village">
+        <PropertyRef Name="District_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_History_Education">
+    <End Type="BootcampManagementModel.Education" Role="Education" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Education_History" Role="Education_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Education">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education_History">
+        <PropertyRef Name="Education_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_Major">
+    <End Type="BootcampManagementModel.Major" Role="Major" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Education" Role="Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Major">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="Major_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_University">
+    <End Type="BootcampManagementModel.University" Role="University" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Education" Role="Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="University_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Education_History_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Education_History" Role="Education_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Education_History">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Access_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Access" Role="Employee_Access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Access">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Certification_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Certification" Role="Employee_Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Certification">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Hiring_Location">
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="0..1" />
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PlaceOfBirth" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Language_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Language" Role="Employee_Language" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Language">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Locker_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Locker" Role="Employee_Locker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Locker">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_PlaceOfBirth">
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="0..1" />
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="HiringLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Religion">
+    <End Type="BootcampManagementModel.Religion" Role="Religion" Multiplicity="0..1" />
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Religion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Religion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Role_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Role" Role="Employee_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Role">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Skill_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Skill" Role="Employee_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Skill">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Village">
+    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="0..1" />
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Village">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Village_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Id_Card_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Id_Card" Role="Id_Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Id_Card">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Organization" Role="Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Placement_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Placement" Role="Placement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Placement">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Work_Experience_Employee">
+    <End Type="BootcampManagementModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Work_Experience" Role="Work_Experience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Work_Experience">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Language_Language">
+    <End Type="BootcampManagementModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Language" Role="Employee_Language" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Language">
+        <PropertyRef Name="Language_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Locker_Locker">
+    <End Type="BootcampManagementModel.Locker" Role="Locker" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Locker" Role="Employee_Locker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Locker">
+        <PropertyRef Name="Locker_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Role_Role">
+    <End Type="BootcampManagementModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Role" Role="Employee_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Role">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Skill_Skill">
+    <End Type="BootcampManagementModel.Skill" Role="Skill" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Employee_Skill" Role="Employee_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Skill">
+        <PropertyRef Name="Skill_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regency_Province">
+    <End Type="BootcampManagementModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="BootcampManagementModel.Regency" Role="Regency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Regency">
+        <PropertyRef Name="Province_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Student_Village">
     <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="1" />
     <End Type="BootcampManagementModel.Student" Role="Student" Multiplicity="*" />
@@ -194,6 +1097,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Student">
+        <PropertyRef Name="Village_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_University_Village">
+    <End Type="BootcampManagementModel.Village" Role="Village" Multiplicity="0..1" />
+    <End Type="BootcampManagementModel.University" Role="University" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Village">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="University">
         <PropertyRef Name="Village_Id" />
       </Dependent>
     </ReferentialConstraint>

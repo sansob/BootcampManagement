@@ -25,14 +25,41 @@ namespace BootcampManagement.Data.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Lesson> Lessons { get; set; }
+        public virtual DbSet<Access_Card> Access_Card { get; set; }
+        public virtual DbSet<Achievement> Achievements { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Certification> Certifications { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Degree> Degrees { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<Education> Educations { get; set; }
+        public virtual DbSet<Education_History> Education_History { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Employee_Access> Employee_Access { get; set; }
+        public virtual DbSet<Employee_Certification> Employee_Certification { get; set; }
+        public virtual DbSet<Employee_Language> Employee_Language { get; set; }
+        public virtual DbSet<Employee_Locker> Employee_Locker { get; set; }
+        public virtual DbSet<Employee_Role> Employee_Role { get; set; }
+        public virtual DbSet<Employee_Skill> Employee_Skill { get; set; }
+        public virtual DbSet<Id_Card> Id_Card { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Lesson> Lessons { get; set; }
+        public virtual DbSet<Locker> Lockers { get; set; }
+        public virtual DbSet<Major> Majors { get; set; }
+        public virtual DbSet<Organization> Organizations { get; set; }
+        public virtual DbSet<Placement> Placements { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Regency> Regencies { get; set; }
-        public virtual DbSet<Village> Villages { get; set; }
-        public virtual DbSet<Batch> Batches { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Religion> Religions { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<University> Universities { get; set; }
+        public virtual DbSet<Village> Villages { get; set; }
+        public virtual DbSet<Work_Experience> Work_Experience { get; set; }
     }
 }

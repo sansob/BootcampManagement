@@ -14,11 +14,20 @@ namespace BootcampManagement.Data.Model
     
     public partial class Religion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Religion()
+        {
+            this.Employees = new HashSet<Employee>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTimeOffset CreateDate { get; set; }
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

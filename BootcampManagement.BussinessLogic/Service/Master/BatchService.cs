@@ -20,6 +20,8 @@ namespace BootcampManagement.BussinessLogic.Service.Master
             _batchRepository = batchRepository;
         }
 
+        public BatchService() { }
+
         public bool Delete(int? id)
         {
             if (id == null)

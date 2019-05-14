@@ -9,7 +9,7 @@ function Save() {
     var religion = new Object();
     religion.name = $('#Name').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Religions',
+        url: '/Religions/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: religion,
@@ -33,7 +33,7 @@ function LoadIndexReligion() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://localhost:12280/api/Religions",
+        url: "/Religions/LoadReligions/",
         dateType: "json",
         success: function (data) {
             var html = '';
@@ -57,7 +57,7 @@ function Edit() {
     religion.id = $('#Id').val();
     religion.name = $('#Name').val();
     $.ajax({
-        url: "http://localhost:12280/api/Religions/" + $('#Id').val(),
+        url: "/Religions/InsertOrUpdate/",
         data: religion,
         type: "PUT",
         dataType: "json",
@@ -79,8 +79,9 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Religions/" + Id,
+        url: "/Religions/GetById/",
         type: "GET",
+        data: { id : Id },
         dataType: "json",
         success: function (result) {
             $('#Id').val(result.Id);
@@ -104,8 +105,9 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Religions/" + Id,
+            url: "/Religions/Delete/",
             type: "DELETE",
+            data: { id: Id },
             success: function (response) {
                 swal({
                     title: "Deleted!",

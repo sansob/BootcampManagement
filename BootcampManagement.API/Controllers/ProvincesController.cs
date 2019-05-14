@@ -12,7 +12,6 @@ using System.Web.Http.Results;
 
 namespace BootcampManagement.API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProvincesController : ApiController
     {
         private readonly IProvinceService _provinceService;

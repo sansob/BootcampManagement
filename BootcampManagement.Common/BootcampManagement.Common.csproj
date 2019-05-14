@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositories\IBatchRepository.cs" />
+    <Compile Include="Repositories\ICompanyRepository.cs" />
     <Compile Include="Repositories\IDistrictRepository.cs" />
     <Compile Include="Repositories\ILessonRepository.cs" />
     <Compile Include="Repositories\IProvinceRepository.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Repositories\IVillageRepository.cs" />
     <Compile Include="Repositories\Master\BatchRepository.cs" />
+    <Compile Include="Repositories\Master\CompanyRepository.cs" />
     <Compile Include="Repositories\Master\DistrictRepository.cs" />
     <Compile Include="Repositories\Master\LessonRepository.cs" />
     <Compile Include="Program.cs" />

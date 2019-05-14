@@ -15,12 +15,12 @@ namespace BootcampManagement.Data.Model
     public partial class Batch
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public System.DateTimeOffset StartDate { get; set; }
         public System.DateTimeOffset EndDate { get; set; }
         public System.DateTimeOffset CreateDate { get; set; }
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
-        public string Name { get; set; }
     }
 }

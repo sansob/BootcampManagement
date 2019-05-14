@@ -26,7 +26,7 @@ function Save() {
     batch.startdate = $('#startdate').val();
     batch.enddate = $('#enddate').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Batches',
+        url: '/Batches/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: batch,
@@ -50,14 +50,14 @@ function LoadIndexBatch() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://localhost:12280/api/Batches",
+        url: "/Batches/LoadBatch/",
         dateType: "json",
         success: function (data) {
             var html = '';
             var i = 1;
             $.each(data, function (index, val) {
-                StartDate = moment(val.StartDate).format('DD/MM/YYYY');
-                EndDate = moment(val.EndDate).format('DD/MM/YYYY');
+                StartDate = moment(val.StartDate).format('MM/DD/YYYY');
+                EndDate = moment(val.EndDate).format('MM/DD/YYYY');
                 html += '<tr>';
                 html += '<td>' + i + '</td>';
                 html += '<td>' + val.Name + '</td>';
@@ -76,10 +76,11 @@ function LoadIndexBatch() {
 function Edit() {
     var batch = new Object();
     batch.id = $('#Id').val();
+    batch.name = $('#Name').val();
     batch.startdate = $('#startdate').val();
     batch.enddate = $('#enddate').val();
     $.ajax({
-        url: "http://localhost:12280/api/Batches/" + $('#Id').val(),
+        url: "/Batches/InsertOrUpdate/",
         data: batch,
         type: "PUT",
         dataType: "json",
@@ -101,12 +102,17 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Batches/" + Id,
+        url: "/Batches/GetById/",
         type: "GET",
+        data: { id : Id },
         dataType: "json",
         success: function (result) {
+            StartDate = moment(result.StartDate).format('MM/DD/YYYY');
+            EndDate = moment(result.EndDate).format('MM/DD/YYYY');
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
+            $('#startdate').val(StartDate);
+            $('#enddate').val(EndDate);
 
             $('#myModal').modal('show');
             $('#Update').show();
@@ -126,7 +132,8 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Batches/" + Id,
+            url: "/Batches/Delete/",
+            data: { id : Id },
             type: "DELETE",
             success: function (response) {
                 swal({

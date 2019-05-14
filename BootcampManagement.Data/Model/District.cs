@@ -14,14 +14,22 @@ namespace BootcampManagement.Data.Model
     
     public partial class District
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public District()
+        {
+            this.Villages = new HashSet<Village>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Regency_Id { get; set; }
         public System.DateTimeOffset CreateDate { get; set; }
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
+        public int Regency_Id { get; set; }
     
         public virtual Regency Regency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Village> Villages { get; set; }
     }
 }

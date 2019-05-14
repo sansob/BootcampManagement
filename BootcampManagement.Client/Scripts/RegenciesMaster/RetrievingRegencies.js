@@ -12,7 +12,7 @@ function Save() {
     regency.Province_Id = $('#Province').val();
     console.log(regency);
     $.ajax({
-        url: 'http://localhost:12280/api/Regencies',
+        url: '/Regencies/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: regency,
@@ -40,22 +40,30 @@ function LoadIndexRegency() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://localhost:12280/api/Regencies",
+        url: "/Regencies/LoadRegency/",
         dateType: "json",
         success: function (data) {
             var html = '';
             var i = 1;
             $.each(data, function (index, val) {
-                html += '<tr>';
-                html += '<td>' + i + '</td>';
-                html += '<td>' + val.Name + '</td>';
-                html += '<td>' + val.Province.Name + '</td>';
-                html += '<td> <a href="#" class="fa fa-pencil" onclick="return GetById(' + val.Id + ')"></a>';
-                html += ' | <a href="#" class="fa fa-trash" onclick="return Delete(' + val.Id + ')"></a> </td>';
-                html += '</tr>';
-                i++;
+                $.ajax({
+                    url: "/Provinces/GetById/",
+                    data: { id: val.Province_Id },
+                    success: function (result) {
+                        html += '<tr>';
+                        html += '<td>' + i + '</td>';
+                        html += '<td>' + val.Name + '</td>';
+                        html += '<td>' + result.Name + '</td>';
+                        html += '<td> <a href="#" onclick="return GetById(' + val.Id + ')">Edit</a>';
+                        html += ' | <a href="#" onclick="return Delete(' + val.Id + ')">Delete</a> </td>';
+                        html += '</tr>';
+                        i++;
+                        $('.tbody').html(html);
+                    }
+
+                });
+
             });
-            $('.tbody').html(html);
         }
     });
 }
@@ -66,10 +74,8 @@ function Edit() {
     regency.name = $('#Name').val();
     regency.Province_Id = $('#Province').val();
     $.ajax({
-        url: "http://localhost:12280/api/Regencies/" + $('#Id').val(),
+        url: "/Regencies/InsertOrUpdate/",
         data: regency,
-        type: "PUT",
-        dataType: "json",
         success: function (result) {
             swal({
                 title: "Saved!",
@@ -94,10 +100,12 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Regencies/" + Id,
+        url: "/Regencies/GetById/",
         type: "GET",
+        data: { id: Id },
         dataType: "json",
         success: function (result) {
+            console.log(result);
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
             $('#Province').val(result.Province_Id);
@@ -120,8 +128,8 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Regencies/" + Id,
-            type: "DELETE",
+            url: "/Regencies/Delete/",
+            data: { id: Id },
             success: function (response) {
                 swal({
                     title: "Deleted!",
@@ -152,7 +160,7 @@ function LoadProvince(element) {
     if (Provinces.length == 0) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:12280/api/Provinces",
+            url: "/Provinces/LoadProvince/",
             success: function (data) {
                 Provinces = data;
                 renderProvince(element);
@@ -176,3 +184,16 @@ LoadProvince($('#Province'));
 $('#Update').hide();
 $('#Save').show();
 ClearScreen();
+
+function Validate() {
+    debugger;
+    if ($('#Name').val() == "" || $('#Name').val() == " ") {
+        swal("Oops", "Please Insert Name", "error")
+    } else if ($('#Province').val() == 0) {
+        swal("Oops", "Please Choose Province", "error")
+    } else if ($('#Id').val() == "") {
+        Save();
+    } else {
+        Edit();
+    }
+}

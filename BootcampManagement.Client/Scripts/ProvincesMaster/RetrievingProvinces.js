@@ -9,9 +9,7 @@ function Save() {
     var province = new Object();
     province.name = $('#Name').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Provinces',
-        type: 'POST',
-        dataType: 'json',
+        url: "/Provinces/InsertOrUpdate/",
         data: province,
         success: function (result) {
             swal({
@@ -33,7 +31,7 @@ function LoadIndexProvince() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://localhost:12280/api/Provinces",
+        url: "/Provinces/LoadProvince/",
         dateType: "json",
         success: function (data) {
             var html = '';
@@ -53,15 +51,12 @@ function LoadIndexProvince() {
 }
 
 function Edit() {
-    debugger;
     var province = new Object();
     province.id = $('#Id').val();
     province.name = $('#Name').val();
     $.ajax({
-        url: "http://localhost:12280/api/Provinces/" + $('#Id').val(),
+        url: "/Provinces/InsertOrUpdate/",
         data: province,
-        type: "PUT",
-        dataType: "json",
         success: function (result) {
             swal({
                 title: "Saved!",
@@ -80,9 +75,10 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Provinces/" + Id,
+        url: "/Provinces/GetById/",
         type: "GET",
         dataType: "json",
+        data: { id : Id },
         success: function (result) {
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
@@ -105,8 +101,8 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Provinces/" + Id,
-            type: "DELETE",
+            url: "/Provinces/Delete/",
+            data: { id: Id },
             success: function (response) {
                 swal({
                     title: "Deleted!",
@@ -132,7 +128,6 @@ function ClearScreen() {
 }
 
 function Validate() {
-    debugger;
     if ($('#Name').val() == "" || $('#Name').val() == " ") {
         swal("Oops", "Please Insert Name", "error")
     } else if ($('#Id').val() == "") {

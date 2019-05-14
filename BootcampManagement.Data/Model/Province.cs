@@ -14,11 +14,20 @@ namespace BootcampManagement.Data.Model
     
     public partial class Province
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Province()
+        {
+            this.Regencies = new HashSet<Regency>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTimeOffset CreateDate { get; set; }
         public System.DateTimeOffset UpdateDate { get; set; }
         public System.DateTimeOffset DeleteDate { get; set; }
         public bool IsDelete { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Regency> Regencies { get; set; }
     }
 }

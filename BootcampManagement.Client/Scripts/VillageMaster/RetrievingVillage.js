@@ -9,23 +9,30 @@
 function LoadIndexVillage() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:12280/api/Villages",
+        url: "/Villages/LoadVillage/",
         async: false,
         dataType: "json",
         success: function (data) {
             var html = '';
             var i = 1;
             $.each(data, function (index, val) {
-                html += '<tr>';
-                html += '<td>' + i + '</td>';
-                html += '<td>' + val.Name + '</td>';
-                html += '<td>' + val.District.Name + '</td>';
-                html += '<td> <a href="#" class="fa fa-pencil" onclick="return GetById(' + val.Id + ')"></a>';
-                html += ' | <a href="#" class="fa fa-trash" onclick="return Delete(' + val.Id + ')"></a> </td>';
-                html += '</tr>';
-                i++;
+                console.log(val);
+                $.ajax({
+                    url: "/Districts/GetById/",
+                    data: { id: val.District_Id },
+                    success: function (result) {
+                        html += '<tr>';
+                        html += '<td>' + i + '</td>';
+                        html += '<td>' + val.Name + '</td>';
+                        html += '<td>' + result.Name + '</td>';
+                        html += '<td> <a href="#" onclick="return GetById(' + val.Id + ')">Edit</a>';
+                        html += ' | <a href="#" onclick="return Delete(' + val.Id + ')">Delete</a> </td>';
+                        html += '</tr>';
+                        i++;
+                        $('.tbody').html(html);
+                    }
+                });
             });
-            $('.tbody').html(html);
         }
     });
 }
@@ -35,7 +42,7 @@ function Save() {
     village.name = $('#Name').val();
     village.District_Id = $('#District').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Villages',
+        url: '/Villages/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: village,
@@ -61,7 +68,7 @@ function Edit() {
     village.name = $('#Name').val();
     village.District_Id = $('#District').val();
     $.ajax({
-        url: "http://localhost:12280/api/Villages/" + $('#Id').val(),
+        url: "/Villages/InsertOrUpdate/",
         data: village,
         type: "PUT",
         dataType: "json",
@@ -83,8 +90,9 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Villages/" + Id,
+        url: "/Villages/GetById/",
         type: "GET",
+        data: { id: Id },
         dataType: "json",
         success: function (result) {
             $('#Id').val(result.Id);
@@ -98,7 +106,7 @@ function GetById(Id) {
     })
 }
 
-function Delete() {
+function Delete(Id) {
     swal({
         title: "Are you sure?",
         text: "You will not be able to recover this imaginary file!",
@@ -109,7 +117,8 @@ function Delete() {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Villages/" + Id,
+            url: "/Villages/Delete/",
+            data: { id : Id },
             type: "DELETE",
             success: function (response) {
                 swal({
@@ -141,7 +150,7 @@ function LoadDistrict(element) {
     if (Districts.length == 0) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:12280/api/Districts",
+            url: "/Districts/LoadDistricts/",
             success: function (data) {
                 Districts = data;
                 renderDistrict(element);

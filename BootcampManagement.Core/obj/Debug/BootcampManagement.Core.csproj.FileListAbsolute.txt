@@ -41,3 +41,4 @@ C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Core\obj\D
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csproj.CopyComplete
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.exe
 C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.pdb
+C:\Users\NaufalAj\Documents\Git\BootcampManagement\BootcampManagement.Core\obj\Debug\BootcampManagement.Core.csprojAssemblyReference.cache

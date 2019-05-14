@@ -24,6 +24,7 @@ namespace BootcampManagement.API
             container.RegisterType<IVillageRepository, VillageRepository>();
             container.RegisterType<IReligionRepository, ReligionRepository>();
             container.RegisterType<IBatchRepository, BatchRepository>();
+            container.RegisterType<ICompanyRepository, CompanyRepository>();
 
             container.RegisterType<ILessonService, LessonService>();
             container.RegisterType<IProvinceService, ProvinceService>();
@@ -32,6 +33,7 @@ namespace BootcampManagement.API
             container.RegisterType<IVillageService, VillageService>();
             container.RegisterType<IReligionService, ReligionService>();
             container.RegisterType<IBatchService, BatchService>();
+            container.RegisterType<ICompanyService, CompanyService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

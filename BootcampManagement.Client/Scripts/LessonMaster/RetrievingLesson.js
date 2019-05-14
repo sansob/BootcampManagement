@@ -9,7 +9,7 @@ function Save() {
     var lesson = new Object();
     lesson.name = $('#Name').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Lesson',
+        url: '/Lesson/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: lesson,
@@ -33,7 +33,7 @@ function LoadIndexLesson() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "http://localhost:12280/api/Lesson",
+        url: "/Lesson/LoadLesson/",
         dateType: "json",
         success: function (data) {
             var html = '';
@@ -57,7 +57,7 @@ function Edit() {
     lesson.id = $('#Id').val();
     lesson.name = $('#Name').val();
     $.ajax({
-        url: "http://localhost:12280/api/Lesson/" + $('#Id').val(),
+        url: "/Lesson/InsertOrUpdate",
         data: lesson,
         type: "PUT",
         dataType: "json",
@@ -79,8 +79,9 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Lesson/" + Id,
+        url: "/Lesson/GetById/",
         type: "GET",
+        data: { id : Id }, 
         dataType: "json",
         success: function (result) {
             $('#Id').val(result.Id);
@@ -104,7 +105,8 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Lesson/" + Id,
+            url: "/Lesson/Delete",
+            data: { id : Id },
             type: "DELETE",
             success: function (response) {
                 swal({

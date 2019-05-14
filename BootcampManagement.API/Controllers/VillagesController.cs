@@ -11,7 +11,6 @@ using System.Web.Http.Cors;
 
 namespace BootcampManagement.API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class VillagesController : ApiController
     {
         private readonly IVillageService _villageService;
