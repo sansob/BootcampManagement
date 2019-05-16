@@ -25,12 +25,14 @@ namespace BootcampManagement.Common.Repositories.Master
 
         public List<Lesson> Get()
         {
-            return myContext.Lessons.Where(x => x.IsDelete == false).ToList();
+            var get = myContext.Lessons.Where(x => x.IsDelete == false).ToList();
+            return get;
         }
 
         public Lesson Get(int? id)
         {
-            return myContext.Lessons.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
+            var get = myContext.Lessons.SingleOrDefault(x => x.IsDelete == false && x.Id == id);
+            return get;
         }
 
         public bool Insert(LessonParam lessonParam)

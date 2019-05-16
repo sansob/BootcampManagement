@@ -10,7 +10,7 @@ function LoadIndexCompany() {
     debugger;
     $.ajax({
         type: "GET",
-        url: "http://localhost:12280/api/Companies",
+        url: "/Companies/LoadCompany/",
         async: false,
         dataType: "json",
         success: function (data) {
@@ -36,9 +36,9 @@ function Save() {
     var company = new Object();
     company.name = $('#Name').val();
     company.address = $('#Address').val();
-    company.Village_Id = $('#District').val();
+    company.Village_Id = $('#Village').val();
     $.ajax({
-        url: 'http://localhost:12280/api/Companies',
+        url: '/Companies/InsertOrUpdate/',
         type: 'POST',
         dataType: 'json',
         data: company,
@@ -65,7 +65,7 @@ function Edit() {
     company.address = $('#Address').val();
     company.Village_Id = $('#District').val();
     $.ajax({
-        url: "http://localhost:12280/api/Companies/" + $('#Id').val(),
+        url: "/Companies/InsertOrUpdate/",
         data: company,
         type: "PUT",
         dataType: "json",
@@ -87,8 +87,9 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "http://localhost:12280/api/Companies/" + Id,
+        url: "/Companies/GetById/",
         type: "GET",
+        data: { id : Id },
         dataType: "json",
         success: function (result) {
             $('#Id').val(result.Id);
@@ -114,8 +115,9 @@ function Delete() {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "http://localhost:12280/api/Companies/" + Id,
+            url: "/Companies/Delete/",
             type: "DELETE",
+            data: { id : Id },
             success: function (response) {
                 swal({
                     title: "Deleted!",
@@ -147,7 +149,7 @@ function LoadVillage(element) {
     if (Villages.length == 0) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:12280/api/Villages",
+            url: "/Villages/LoadVillage/",
             success: function (data) {
                 Villages = data;
                 renderVillage(element);

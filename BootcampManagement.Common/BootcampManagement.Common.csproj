@@ -57,6 +57,7 @@
     <Compile Include="Repositories\IProvinceRepository.cs" />
     <Compile Include="Repositories\IRegencyRepository.cs" />
     <Compile Include="Repositories\IReligionRepository.cs" />
+    <Compile Include="Repositories\IRoomRepository.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />
     <Compile Include="Repositories\IVillageRepository.cs" />
     <Compile Include="Repositories\Master\BatchRepository.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Repositories\Master\ProvinceRepository.cs" />
     <Compile Include="Repositories\Master\RegencyRepository.cs" />
     <Compile Include="Repositories\Master\ReligionRepository.cs" />
+    <Compile Include="Repositories\Master\RoomRepository.cs" />
     <Compile Include="Repositories\Master\StudentRepository.cs" />
     <Compile Include="Repositories\Master\VillageRepository.cs" />
   </ItemGroup>

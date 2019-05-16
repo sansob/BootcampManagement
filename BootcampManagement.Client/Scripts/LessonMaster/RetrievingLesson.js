@@ -33,7 +33,7 @@ function LoadIndexLesson() {
     $.ajax({
         type: "GET",
         async: false,
-        url: "/Lesson/LoadLesson/",
+        url: "/Lessons/LoadLesson/",
         dateType: "json",
         success: function (data) {
             var html = '';
@@ -57,7 +57,7 @@ function Edit() {
     lesson.id = $('#Id').val();
     lesson.name = $('#Name').val();
     $.ajax({
-        url: "/Lesson/InsertOrUpdate",
+        url: "/Lessons/InsertOrUpdate",
         data: lesson,
         type: "PUT",
         dataType: "json",
@@ -79,7 +79,7 @@ function Edit() {
 
 function GetById(Id) {
     $.ajax({
-        url: "/Lesson/GetById/",
+        url: "/Lessons/GetById/",
         type: "GET",
         data: { id : Id }, 
         dataType: "json",
@@ -105,7 +105,7 @@ function Delete(Id) {
         closeOnConfirm: false
     }, function () {
         $.ajax({
-            url: "/Lesson/Delete",
+            url: "/Lessons/Delete",
             data: { id : Id },
             type: "DELETE",
             success: function (response) {

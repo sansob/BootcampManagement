@@ -25,7 +25,7 @@ namespace BootcampManagement.Client.Controllers
             {
                 BaseAddress = new Uri("http://localhost:12280/api/")
             };
-            var responseTask = client.GetAsync("Lessons");
+            var responseTask = client.GetAsync("Lesson");
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
@@ -69,7 +69,7 @@ namespace BootcampManagement.Client.Controllers
             {
                 BaseAddress = new Uri("http://localhost:12280/api/")
             };
-            var responseTask = client.GetAsync("Lessons/" + id);
+            var responseTask = client.GetAsync("Lesson/" + id);
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)

@@ -23,8 +23,6 @@ namespace BootcampManagement.API.Controllers
             _batchService = batchService;
         }
 
-        BatchService batchService = new BatchService(); 
-
         // GET: api/Batchs
         public IEnumerable<Batch> Get()
         {

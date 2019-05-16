@@ -182,6 +182,7 @@
     <Compile Include="Param\ProvinceParam.cs" />
     <Compile Include="Param\RegencyParam.cs" />
     <Compile Include="Param\ReligionParam.cs" />
+    <Compile Include="Param\RoomParam.cs" />
     <Compile Include="Param\StudentParam.cs" />
     <Compile Include="Param\VillageParam.cs" />
     <Compile Include="Program.cs" />

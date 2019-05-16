@@ -64,7 +64,7 @@ namespace BootcampManagement.Client.Controllers
 
         public JsonResult GetById(int id)
         {
-            ProvinceVM provinceVM = null;
+            BatchVM batchVM = null;
             var client = new HttpClient
             {
                 BaseAddress = new Uri("http://localhost:12280/api/")
@@ -74,15 +74,15 @@ namespace BootcampManagement.Client.Controllers
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<ProvinceVM>();
+                var readTask = result.Content.ReadAsAsync<BatchVM>();
                 readTask.Wait();
-                provinceVM = readTask.Result;
+                batchVM = readTask.Result;
             }
             else
             {
                 // try to find something
             }
-            return Json(provinceVM, JsonRequestBehavior.AllowGet);
+            return Json(batchVM, JsonRequestBehavior.AllowGet);
         }
 
         public void Delete(int id)

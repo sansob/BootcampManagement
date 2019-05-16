@@ -186,6 +186,7 @@
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\RegenciesController.cs" />
     <Compile Include="Controllers\ReligionsController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\VillagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,11 +197,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BatchVM.cs" />
+    <Compile Include="ViewModels\CompanyVM.cs" />
     <Compile Include="ViewModels\DistrictVM.cs" />
     <Compile Include="ViewModels\LessonVM.cs" />
     <Compile Include="ViewModels\ProvinceVM.cs" />
     <Compile Include="ViewModels\RegencyVM.cs" />
     <Compile Include="ViewModels\ReligionVM.cs" />
+    <Compile Include="ViewModels\RoomVM.cs" />
     <Compile Include="ViewModels\VillageVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4082,6 +4085,7 @@
     <Content Include="Scripts\ProvincesMaster\RetrievingProvinces.js" />
     <Content Include="Scripts\RegenciesMaster\RetrievingRegencies.js" />
     <Content Include="Scripts\ReligionMaster\RetrievingReligions.js" />
+    <Content Include="Scripts\RoomMaster\RetrievingRoom.js" />
     <Content Include="Scripts\VillageMaster\RetrievingVillage.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4126,6 +4130,7 @@
     <Content Include="Views\Religions\Index.cshtml" />
     <Content Include="Views\Batches\Index.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
